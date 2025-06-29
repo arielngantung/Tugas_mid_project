@@ -1,106 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar web.</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Ariel Ngantung - Blog & Galeri</title>
+    <!-- Tautan ke Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tautan ke file CSS eksternal -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <div class="wrapper">
-            <div class="logo"><a href=''>Ariel Ngantung. </a></div>
-            <div class="menu">
-                <ul>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-brand">Ariel Ngantung</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="Galery.html">Gallery</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact" class="nav-button">Kontak</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="container main-content">
+
+        <!-- Bagian Home/Profil -->
+        <section id="home" class="home-section">
+            <div class="home-text">
+                <span class="greeting">Halo Semuanya!</span>
+                <h1>Saya Ariel Darnel Ngantung</h1>
+                <p>Mahasiswa Teknik Informatika di Universitas Sam Ratulangi, Manado. Memiliki minat pada pengembangan web dan teknologi.</p>
+                <span class="tag">#UnsratJaya</span>
+            </div>
+            <div class="home-image">
+                <img src="Img/img1.png" alt="Foto Ariel Darnel Ngantung">
+            </div>
+        </section>
+
+        <!-- Bagian Pratinjau Galeri -->
+        <section id="gallery" class="gallery-section">
+            <h2 class="section-title">Galeri Saya</h2>
+            <p class="section-subtitle">Beberapa cuplikan momen dari galeri saya.</p>
+            <div class="gallery-grid">
+                <!-- Tampilkan hanya 3 gambar sebagai pratinjau -->
+                <div class="gallery-item">
+                    <img src="Img/BlueChoir.jpg" alt="Choir">
+                </div>
+                <div class="gallery-item">
+                    <img src="Img/Figma.jpg" alt="Proyek Coding">
+                </div>
+                <div class="gallery-item">
+                    <img src="Img/BibleCamp.jpg" alt="Organisasi">
+                </div>
+            </div>
+            <div class="view-all-container">
+                <a href="Galery.html" class="view-all-button">Lihat Semua Gallery &rarr;</a>
+            </div>
+        </section>
+
+        <!-- Bagian Blog -->
+        <section id="blog" class="blog-section">
+            <h2 class="section-title">Blog Saya</h2>
+            <p class="section-subtitle">Tulisan dan pemikiran saya tentang berbagai topik.</p>
+            <div class="blog-grid">
+                <!-- Postingan Blog 1 -->
+                <div class="blog-card">
+                    <img src="Img/Choir.jpeg" alt="Gambar Paduan Suara">
+                    <div class="card-content">
+                        <h3>Paduan Suara: Harmoni dalam Kebersamaan</h3>
+                        <p>Menjelajahi keindahan dan manfaat bergabung dalam paduan suara.</p>
+                        <a href="Blog1.html">Baca Selengkapnya &rarr;</a>
+                    </div>
+                </div>
+                <!-- Postingan Blog 2 -->
+                <div class="blog-card">
+                    <img src="Img/Badminton.jpeg" alt="Gambar Bulu Tangkis">
+                    <div class="card-content">
+                        <h3>Manfaat Bermain Bulu Tangkis</h3>
+                        <p>Kebaikan untuk fisik dan mental dari olahraga bulu tangkis.</p>
+                        <a href="Blog2.html">Baca Selengkapnya &rarr;</a>
+                    </div>
+                </div>
+                <!-- Postingan Blog 3 -->
+                <div class="blog-card">
+                     <img src="Img/Car.jpeg" alt="Gambar Mobil Klasik">
+                    <div class="card-content">
+                        <h3>Pesona Mobil Klasik</h3>
+                        <p>Mengapa mobil klasik lebih dari sekadar kendaraan.</p>
+                        <a href="Blog3.html">Baca Selengkapnya &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container footer-container">
+            <div class="footer-column">
+                <h3>Tentang Saya</h3>
+                <p>Mahasiswa Teknik Informatika Universitas Sam Ratulangi yang bersemangat tentang pengembangan web dan teknologi.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Kontak</h3>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/08114399450" target="_blank">Whatsapp</a></li>
+                    <li><a href="https://www.instagram.com/darnelaril/" target="_blank">Instagram</a></li>
+                    <li><a href="https://github.com/arielngantung" target="_blank">Github</a></li>
+                    <li><a href="mailto:arielngantung026@student.unsrat.ac.id" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Tautan Cepat</h3>
+                 <ul class="footer-links">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#Blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="#blog">Blog</a></li>
                 </ul>
             </div>
         </div>
-    </nav>
-    <div class="wrapper">
-        <!-- untuk home -->
-        <section id="home">
-            <img src="botak.png" style="width: 300px; height:400px;"/>
-            <div class="kolom">
-                <p class="deskripsi">Ariel Ngantung INFORMATIKA 2022</p>
-                <h2>Mahasiswa UNSRAT,</h2>
-                <p></p>
-            </div>
-        </section>
-
-        <!-- untuk gallery -->
-        <section id="gallery">
-            <div class="tengah">
-                <div class="kolom">
-                    <p class="deskripsi">My Gallery</p>
-                    <h2>Gallery</h2>
-                    <p>Beberapa gambaran hobby saya</p>
-                </div>
-
-                <div class="list-hobby">
-                    <div class="kartu-hobby">
-                        <img src="https://th.bing.com/th/id/OIP.Xjn-Hd3cREvwsi9uSuJgYQHaIU?rs=1&pid=ImgDetMain"/>
-                        <p>BADMINTON</p>
-                    </div>
-                    <div class="kartu-hobby">
-                        <img src="https://th.bing.com/th/id/OIP.nCiqbZ06UBJ1qSLUc81EYwHaHa?rs=1&pid=ImgDetMain"/>
-                        <p>VOLLYBALL</p>
-                    </div>
-                    <div class="kartu-hobby">
-                        <img src="https://th.bing.com/th/id/OIP.gtCzAGNtMMGEljyFd9vTKwHaJM?w=1024&h=1272&rs=1&pid=ImgDetMaini"/>
-                        <p>GUITARIST</p>
-                    </div>
-                    <div class="kartu-hobby">
-                        <img src="https://i.pinimg.com/originals/09/79/06/09790632148c94c5742361da6f0d9cdc.jpg"/>
-                        <p>CHOIR</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- untuk blog -->
-        <section id="Blog">
-            <div class="tengah">
-                <div class="kolom">
-                    <h2>BLOG</h2>
-                </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="contact">
-        <div class="wrapper">
-            <div class="footer">
-                <div class="footer-section">
-                    <h3>Ariel.</h3>
-                    <p>Mahasiswa Universitas Sam Ratulangi</p>
-                </div>
-                <div class="footer-section">
-                    <h3>About</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, culpa!</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>Perumahan palm Blok B4,Winangun Satu, Kota Manado, Sulawesi Utara</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Social</h3>
-                    <p><b>Instagram: </b>@darnelaril</p>
-                    <p><b>facebook: </b>Ariel Ngantung</p>
-                </div>
-            </div>
+        <div class="footer-bottom">
+            <p>Web ini dibuat untuk memenuhi Tugas Mata Kuliah Pemrograman Web - Universitas Sam Ratulangi.</p>
+            <p>&copy; 2025 Ariel Ngantung. Hak Cipta Dilindungi.</p>
         </div>
-    </div>
+    </footer>
 
-    <div id="copyright">
-        <div class="wrapper">
-            &copy; 2023. <b>Ariel Ngantung.</b> All Rights Reserved.
-        </div>
-    </div>
-    
 </body>
 </html>

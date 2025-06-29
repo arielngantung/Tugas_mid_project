@@ -1,0 +1,391 @@
+/* File: gallery-styles.css */
+/* Deskripsi: Gaya kustom khusus untuk halaman galeri. */
+
+/* ----- GENERAL & UTILITIES ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F9FAFB;
+    color: #1F2937;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* ----- NAVBAR ----- */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1.75rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #4B5563;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-menu a:hover {
+    color: #2563EB;
+}
+
+.nav-menu a.active {
+    color: #2563EB;
+    border-bottom-color: #2563EB;
+}
+
+.nav-button {
+    background-color: #2563EB;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+    background-color: #1D4ED8;
+    color: white;
+    transform: scale(1.05);
+}
+
+
+/* ----- MAIN CONTENT ----- */
+.main-content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #4B5563;
+    font-size: 1.1rem;
+    margin-bottom: 4rem;
+}
+
+/* ----- UPLOAD CONTAINER ----- */
+.upload-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.open-upload-button {
+    display: inline-block;
+    background-color: #2563EB;
+    color: white;
+    padding: 0.8rem 2.5rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.open-upload-button:hover {
+    background-color: #1D4ED8;
+    transform: translateY(-2px);
+}
+
+/* ----- ADD PHOTO FORM ----- */
+.add-photo-section {
+    display: none;
+    margin-top: 1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-photo-section.active {
+    display: block;
+}
+
+.add-photo-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    flex-grow: 1;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.add-photo-form input[type="text"] {
+    flex-grow: 1;
+    padding: 0.85rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.add-photo-form input[type="text"]:focus {
+    outline: none;
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.add-photo-form input[type="file"] {
+    display: none;
+}
+
+.file-upload-label {
+    background-color: #374151;
+    color: white;
+    padding: 0.85rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.file-upload-label:hover {
+    background-color: #4B5563;
+}
+
+.submit-button {
+    background-color: #16A34A;
+    color: white;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-button:hover {
+    background-color: #15803D;
+    transform: translateY(-2px);
+}
+
+/* ----- GALLERY SECTION ----- */
+.gallery-section {
+    margin-bottom: 4rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    padding: 2rem 1rem 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+/* Tombol Hapus pada Item Galeri */
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(220, 38, 38, 0.8); /* Merah dengan transparansi */
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    z-index: 2; /* Pastikan di atas overlay */
+}
+
+.gallery-item:hover .delete-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.delete-btn:hover {
+    background-color: #DC2626; /* Merah solid saat hover */
+    transform: scale(1.1);
+}
+
+
+/* ----- FOOTER ----- */
+.footer {
+    background-color: #111827;
+    color: white;
+    padding-top: 2rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: #9CA3AF;
+    padding: 2rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* ----- LIGHTBOX ----- */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 8px;
+    animation: zoomIn 0.3s;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); }
+    to { transform: scale(1); }
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-lightbox:hover,
+.close-lightbox:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+
+/* ----- RESPONSIVE DESIGN ----- */
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .file-upload-label {
+        width: 100%;
+        max-width: none;
+    }
+}

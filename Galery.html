@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Ariel Ngantung</title>
+    <!-- Tautan ke Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tautan ke file CSS khusus galeri -->
+    <link rel="stylesheet" href="Galery.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">Ariel Ngantung</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-button">Kontak</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="container main-content">
+        
+        <!-- Bagian Galeri Penuh -->
+        <section id="gallery-page" class="gallery-section">
+            <h1 class="section-title">Galeri Lengkap</h1>
+            <p class="section-subtitle">Kumpulan momen, kegiatan, dan hobi yang saya dokumentasikan.</p>
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Foto yang disimpan akan dimuat di sini oleh JavaScript -->
+            </div>
+
+            <!-- Kontainer untuk Tombol dan Formulir Upload -->
+            <div class="upload-container">
+                <button id="openUploadBtn" class="open-upload-button">Upload Foto</button>
+                <section id="add-photo-section" class="add-photo-section">
+                    <form id="add-photo-form" class="add-photo-form">
+                         <div class="input-group">
+                            <label for="image-file" class="file-upload-label" id="file-label-text">Pilih File...</label>
+                            <input type="file" id="image-file" name="imageFile" accept="image/*" required>
+                            <input type="text" id="image-caption" name="imageCaption" placeholder="Tambahkan keterangan singkat..." required>
+                        </div>
+                        <button type="submit" class="submit-button">Tambah</button>
+                    </form>
+                </section>
+                <!-- Tombol Hapus Semua Foto telah dihapus -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="footer-bottom">
+             <p>&copy; 2025 Ariel Ngantung. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryGrid = document.getElementById('gallery-grid');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.querySelector('.close-lightbox');
+            const openUploadBtn = document.getElementById('openUploadBtn');
+            const addPhotoSection = document.getElementById('add-photo-section');
+            const addPhotoForm = document.getElementById('add-photo-form');
+            const fileInput = document.getElementById('image-file');
+            const imageCaptionInput = document.getElementById('image-caption');
+            const fileLabel = document.getElementById('file-label-text');
+
+            // --- Event Listener Utama untuk Galeri (Lightbox & Hapus) ---
+            galleryGrid.addEventListener('click', (e) => {
+                const item = e.target.closest('.gallery-item');
+                if (!item) return;
+
+                // Jika tombol hapus diklik
+                if (e.target.classList.contains('delete-btn')) {
+                    e.stopPropagation(); // Mencegah lightbox terbuka saat menghapus
+                    const indexToDelete = parseInt(item.dataset.index, 10);
+                    
+                    if (confirm('Apakah Anda yakin ingin menghapus foto ini?')) {
+                        let photos = getSavedPhotos();
+                        photos.splice(indexToDelete, 1); // Hapus foto dari array
+                        savePhotos(photos); // Simpan array yang sudah diperbarui
+                        loadGallery(); // Muat ulang galeri untuk menampilkan perubahan
+                    }
+                } 
+                // Jika area lain dari item diklik (untuk membuka lightbox)
+                else {
+                    lightboxImg.src = item.querySelector('img').src;
+                    lightbox.style.display = 'flex';
+                }
+            });
+
+            const closeLightbox = () => lightbox.style.display = 'none';
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => (e.target === lightbox) && closeLightbox());
+
+            // --- Form Visibility Logic ---
+            openUploadBtn.addEventListener('click', () => {
+                addPhotoSection.classList.add('active');
+                openUploadBtn.style.display = 'none';
+            });
+
+            // --- Local Storage Logic ---
+            const savedPhotosKey = 'myPersonalGallery';
+            const getSavedPhotos = () => JSON.parse(localStorage.getItem(savedPhotosKey)) || [];
+            const savePhotos = (photos) => localStorage.setItem(savedPhotosKey, JSON.stringify(photos));
+
+            // Function untuk membuat elemen item galeri, sekarang termasuk tombol hapus
+            const createGalleryItem = (photo, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.dataset.index = index; // Menyimpan index untuk referensi penghapusan
+                item.innerHTML = `
+                    <img src="${photo.src}" alt="${photo.caption}">
+                    <div class="overlay"><p>${photo.caption}</p></div>
+                    <span class="delete-btn" title="Hapus foto">&times;</span>
+                `;
+                return item;
+            };
+
+            // Function untuk memuat dan menampilkan semua foto yang tersimpan
+            const loadGallery = () => {
+                galleryGrid.innerHTML = ''; // Kosongkan galeri sebelum memuat
+                const photos = getSavedPhotos();
+                photos.forEach((photo, index) => {
+                    const item = createGalleryItem(photo, index);
+                    galleryGrid.appendChild(item);
+                });
+            };
+
+            // --- Form Submission Logic ---
+            addPhotoForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const file = fileInput.files[0];
+                const caption = imageCaptionInput.value.trim();
+
+                if (!file || caption === '') {
+                    alert('Harap pilih file gambar dan isi keterangannya!');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const newPhoto = { src: event.target.result, caption: caption };
+                    const photos = getSavedPhotos();
+                    photos.push(newPhoto);
+                    savePhotos(photos);
+                    
+                    loadGallery(); // Muat ulang seluruh galeri untuk menjaga urutan index yang benar
+
+                    // Reset UI formulir
+                    addPhotoForm.reset();
+                    fileLabel.textContent = 'Pilih File...';
+                    addPhotoSection.classList.remove('active');
+                    openUploadBtn.style.display = 'inline-block';
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // --- Initial Load ---
+            loadGallery();
+        });
+    </script>
+</body>
+</html>

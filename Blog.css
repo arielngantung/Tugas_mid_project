@@ -1,0 +1,189 @@
+/* File: blog-styles.css */
+/* Deskripsi: Gaya kustom khusus untuk halaman-halaman blog. */
+
+/* ----- GENERAL & UTILITIES ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F9FAFB;
+    color: #1F2937;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* ----- NAVBAR ----- */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1.75rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #4B5563;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-menu a:hover {
+    color: #2563EB;
+}
+
+.nav-menu a.active {
+    color: #2563EB;
+    border-bottom-color: #2563EB;
+}
+
+.nav-button {
+    background-color: #2563EB;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+    background-color: #1D4ED8;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* ----- MAIN CONTENT ----- */
+.main-content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* ----- BLOG ARTICLE STYLES ----- */
+.blog-article {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.article-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.article-header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.article-meta {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.article-banner {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.article-content {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #374151;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+}
+
+.article-content h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.article-content blockquote {
+    margin: 2rem 0;
+    padding-left: 1.5rem;
+    border-left: 4px solid #D1D5DB;
+    font-style: italic;
+    color: #4B5563;
+    font-size: 1.2rem;
+}
+
+/* ----- FOOTER ----- */
+.footer {
+    background-color: #111827;
+    color: white;
+    margin-top: 4rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: #9CA3AF;
+    padding: 2rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+
+/* ----- RESPONSIVE DESIGN ----- */
+@media (max-width: 768px) {
+    .article-header h1 {
+        font-size: 2rem;
+    }
+    .blog-article {
+        padding: 1.5rem;
+    }
+}
